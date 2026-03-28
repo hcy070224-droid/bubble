@@ -1,5 +1,6 @@
 import random
 import time
+import os
 #一、信息初始化与查找
 #student类#存数据
 class Student:
@@ -100,3 +101,22 @@ def generate_exam_table(self):#生成考试安排表
                 f.write(f"{i}\t{stu.name}\t{stu.student_id}\n")
         print("考场安排表生成")
         return shuffled  #返回打乱后的顺序用于准考证生成
+
+#四、准考证
+def generate_admission_cards(self, shuffled):
+        folder = "准考证"
+        if not os.path.exists(folder):
+            os.mkdir(folder)# 创建文件夹
+        for i, stu in enumerate(shuffled, start=1):# 逐个生成文件
+            file_path = os.path.join(folder, f"{i:02d}.txt")  # 生成“01.txt格式”
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write(f"座位号: {i}\n")
+                f.write(f"姓名: {stu.name}\n")
+                f.write(f"学号: {stu.student_id}\n")
+
+        print("准考证生成")
+#验证是否输入为数字
+@staticmethod
+def validate_student_id(student_id):
+    return student_id.isdigit()  # 判断是否全为数字
+
