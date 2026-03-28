@@ -28,24 +28,24 @@
 ##            print(f"提示：不存在【{student_id}】该学号")
 ##...
 ##def random_select(self):    
-#        try:
-#        #获取用户输入
-#           num_str = input("请输入需要点名的人数：")
-#        #调用静态方法检查是否为数字
-#            num = self.validate_number(num_str)
-#        #选择抽取学生人数
-#            total = len(self.students)
-#        #将所有学生对象转为列表
-#            student_list = list(self.students.values())
-#        #随机抽取不重复学生
-#            result = random.sample(student_list, num)
-#            print("随机点名结果如下：")
-#            for stu in result:
-#                print(stu.name)
-#        except ValueError as e:
-#        #捕获不是数字的异常
-#            print(f"输入错误：{e}")
-#...
+##        try:
+##        #获取用户输入
+##           num_str = input("请输入需要点名的人数：")
+##        #调用静态方法检查是否为数字
+##            num = self.validate_number(num_str)
+##        #选择抽取学生人数
+##            total = len(self.students)
+##        #将所有学生对象转为列表
+##            student_list = list(self.students.values())
+##        #随机抽取不重复学生
+##            result = random.sample(student_list, num)
+##            print("随机点名结果如下：")
+##            for stu in result:
+##                print(stu.name)
+##        except ValueError as e:
+##        #捕获不是数字的异常
+##            print(f"输入错误：{e}")
+##...
 ##AI ⽣成的问题/缺陷：没有捕获异常
 ##优化后的 Prompt (追问)：我强调了作业要求：必须使⽤try-except 代码块处理潜在的异常（如FileNotFoundError ⽂件丢失异常、ValueError ⾮法数值转换异常），让其检查对用户输入的异常捕捉，得到了完善的代码
 ##
