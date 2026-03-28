@@ -1,4 +1,5 @@
 import random
+import time
 #一、信息初始化与查找
 #student类#存数据
 class Student:
@@ -65,7 +66,7 @@ def random_roll_call(self):
         num_str = input("请输入需要点名的人数：")
         #调用静态方法检查是否为数字
         num = self.validate_number(num_str)
-      #选择抽取学生人数
+        #选择抽取学生人数
         total = len(self.students)
         #判断是否超过总人数
         if num > total:
@@ -81,3 +82,21 @@ def random_roll_call(self):
     except ValueError as e:
         #捕获不是数字的异常
         print(f"输入错误：{e}")
+
+#三、考试安排表
+
+def generate_exam_table(self):#生成考试安排表
+        #打乱学生顺序
+        shuffled = self.students[:]
+        random.shuffle(shuffled)
+        file_name = "考场安排表.txt"
+        with open(file_name, 'w', encoding='utf-8') as f:
+            now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())#记录生成时间
+            f.write(f"生成时间: {now}\n")
+            #写入表头
+            f.write("座位号\t姓名\t学号\n")
+            #填写内容
+            for i,stu in enumerate(shuffled,start=1):
+                f.write(f"{i}\t{stu.name}\t{stu.student_id}\n")
+        print("考场安排表生成")
+        return shuffled  #返回打乱后的顺序用于准考证生成
