@@ -19,12 +19,13 @@
 ##（展示⼀次你通过修改提示词，让 AI 的代码从“不符合要求”变成“完美符合⼯程规范”的过程）
 ##（1）初代 Prompt：
 ##...
-##def find_student(self, student_id):#输入学号 → 查信息
-#       #查询学生
-#        if student_id in self.students:
-#            print(self.students[student_id])  #调用__str__
-#        else:
-#            print(f"提示：不存在【{student_id}】该学号")
+##def find_student(self, student_id):
+###输入学号 → 查信息
+##       #查询学生
+##        if student_id in self.students:
+##            print(self.students[student_id])  #调用__str__
+##        else:
+##            print(f"提示：不存在【{student_id}】该学号")
 ##...
 ##def random_select(self):    
 #        try:
