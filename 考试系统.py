@@ -120,3 +120,39 @@ def generate_admission_cards(self, shuffled):
 def validate_student_id(student_id):
     return student_id.isdigit()  # 判断是否全为数字
 
+#主函数
+if __name__ == "__main__":#确保这段代码只在直接运行这个文件时执行
+    system = ExamSystem("人工智能编程语言学生名单.txt")#读取学生信息
+
+    while True:#选择功能 #while true 保证程序持续运行，直到用户主动退出
+        print("1. 查询学生")
+        print("2. 随机点名")
+        print("3. 生成考场安排表")
+        print("4. 生成准考证")
+        print("0. 退出")
+
+        choice = input("请选择功能: ")
+
+        if choice == '1':
+            sid = input("请输入学号: ")
+            if ExamSystem.validate_student_id(sid):
+                system.find_student(sid)
+            else:
+                print("学号格式错误")#排除异常
+
+        elif choice == '2':
+            system.random_select()#随机选人
+
+        elif choice == '3':
+            shuffled = system.generate_exam_table() #打乱顺序
+
+        elif choice == '4':
+            try:
+                system.generate_admission_cards(shuffled)
+            except:
+                print("请先生成考场安排表")#如果用户没先执行第3步→程序会报错
+
+        elif choice == '0':
+            break
+        else:
+            print("无效选择") #排除其他异常
