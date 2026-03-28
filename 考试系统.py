@@ -1,4 +1,4 @@
-
+import random
 #一、信息初始化与查找
 #student类#存数据
 class Student:
@@ -56,3 +56,28 @@ class ExamSystem:
         if not input_str.isdigit():
             raise ValueError("输入必须是数字！")
         return int(input_str)
+
+#二、随机点名
+
+def random_roll_call(self):
+    try:
+        #获取用户输入
+        num_str = input("请输入需要点名的人数：")
+        #调用静态方法检查是否为数字
+        num = self.validate_number(num_str)
+      #选择抽取学生人数
+        total = len(self.students)
+        #判断是否超过总人数
+        if num > total:
+            print(f"错误：人数不能超过总人数（当前共{total}人）")
+            return
+        #将所有学生对象转为列表
+        student_list = list(self.students.values())
+        #随机抽取不重复学生
+        result = random.sample(student_list, num)
+        print("随机点名结果如下：")
+        for stu in result:
+            print(stu.name)
+    except ValueError as e:
+        #捕获不是数字的异常
+        print(f"输入错误：{e}")
