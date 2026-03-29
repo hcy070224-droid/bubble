@@ -28,16 +28,15 @@ class ExamSystem:
         try:
             with open(self.file_path, "r", encoding="utf-8") as f:
                 f.readline()  #跳过表头
-
                 for line in f:#逐行读取
                     block=line.strip().split( )  #按空格切分
                     #创建Student对象
                     stu = Student(
-                        student_id=block[4],
-                        name=block[1],
-                        gender=block[2],
-                        class_name=block[3],
-                        college=block[5]
+                        student_id=block[4], #学号
+                        name=block[1],#姓名
+                        gender=block[2],#性别
+                        class_name=block[3], #班级
+                        college=block[5]#学院
                     )
                     #用学号作为key存储
                     self.students[stu.student_id] = stu
@@ -60,7 +59,7 @@ class ExamSystem:
 
 #二、随机点名
 
-    def random_select(self):
+    def random_select(self):    
         try:
         #获取用户输入
             num_str = input("请输入需要点名的人数：")
@@ -126,7 +125,7 @@ class ExamSystem:
 
 #主函数
 if __name__ == "__main__":#确保这段代码只在直接运行这个文件时执行
-    system = ExamSystem("c:\\Users\\黄晨昱\\Desktop\\第二次py\\人工智能编程语言学生名单.txt")#读取学生信息
+    system = ExamSystem("人工智能编程语言学生名单.txt")#读取学生信息
 
     while True:#选择功能 #while true 保证程序持续运行，直到用户主动退出
         print("1. 查询学生")
